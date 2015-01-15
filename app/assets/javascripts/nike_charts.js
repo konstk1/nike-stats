@@ -2,3 +2,17 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #= require highcharts
+
+$(function() {
+	new Highcharts.Chart({
+		chart: {
+			renderTo: "chart1"
+		},
+		series: [{
+			data: <%= @distances %>
+		}],
+		credits: [{
+			enabled: false
+		}]
+	});
+});

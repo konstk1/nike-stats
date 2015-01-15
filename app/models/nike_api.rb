@@ -10,9 +10,9 @@ class NikeApi
   def distanceByRun
     distances = Array.new
     i = 0
-    @activity_list_json["data"].each { |run| 
+    @activity_list_json["data"].reverse.each { |run| 
       if run["activityType"] == "RUN"
-        distances[i] = km_to_mi(run["metricSummary"]["distance"])
+        distances[i] = km_to_mi(run["metricSummary"]["distance"].to_f)
         i = i + 1
       end
     }
@@ -46,5 +46,5 @@ private
 end
 
 def km_to_mi(km)
-  return km.to_f * 0.621371
+  return km * 0.621371
 end
