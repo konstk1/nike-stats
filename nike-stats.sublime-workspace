@@ -3,10 +3,58 @@
 	{
 		"selected_items":
 		[
+			[
+				"activ",
+				"activity_list_json"
+			],
+			[
+				"act",
+				"activity_list_json"
+			],
+			[
+				"ea",
+				"eawi	each_with_index { |e, i| .. }"
+			],
+			[
+				"login",
+				"login_to_nike"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "app/controllers/nike_charts_controller.rb",
+			"settings":
+			{
+				"buffer_size": 293,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/nike_api.rb",
+			"settings":
+			{
+				"buffer_size": 1322,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/nike_charts/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 117,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/nike_charts.js",
+			"settings":
+			{
+				"buffer_size": 402,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -35,14 +83,26 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/Kon/Developer/nike-stats"
+		"/Users/Kon/Developer/nike-stats",
+		"/Users/Kon/Developer/nike-stats/app",
+		"/Users/Kon/Developer/nike-stats/app/assets",
+		"/Users/Kon/Developer/nike-stats/app/assets/javascripts",
+		"/Users/Kon/Developer/nike-stats/app/controllers",
+		"/Users/Kon/Developer/nike-stats/app/helpers",
+		"/Users/Kon/Developer/nike-stats/app/views",
+		"/Users/Kon/Developer/nike-stats/app/views/nike_charts",
+		"/Users/Kon/Developer/nike-stats/lib",
+		"/Users/Kon/Developer/nike-stats/lib/assets",
+		"/Users/Kon/Developer/nike-stats/lib/tasks"
 	],
 	"file_history":
 	[
+		"/Users/Kon/Developer/nike-stats/app/helpers/nike_charts_helper.rb",
+		"/Users/Kon/Developer/nike-stats/app/assets/javascripts/nike_charts.js.coffee"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -56,6 +116,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"logger"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -73,8 +134,124 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/controllers/nike_charts_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								257,
+								257
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/models/nike_api.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								781,
+								787
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/views/nike_charts/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 117,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								115,
+								115
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/assets/javascripts/nike_charts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								402,
+								402
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -84,7 +261,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -151,7 +328,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 238.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

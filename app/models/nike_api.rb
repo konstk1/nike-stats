@@ -2,21 +2,24 @@ require "json"
 
 class NikeApi
   
+  RunData = Struct.new(:activityId, :startTime, :distance, :duration, :calories)
+
   def initialize(username:, password:)
     login_to_nike(username, password)
-    get_activity_list_json(count: 999)
+    get_activity_list_json(count: 1)
   end	
 
-  def distanceByRun
-    distances = Array.new
+  def get_run_data
+    run_data = Array.new
     i = 0
     @activity_list_json["data"].reverse.each { |run| 
       if run["activityType"] == "RUN"
-        distances[i] = km_to_mi(run["metricSummary"]["distance"].to_f)
+        run_data[i] = json_to_run_data(run)
+        Rails.logger.info run_data[i]
         i = i + 1
       end
     }
-    return distances
+    return run_data
   end
 
 private
@@ -42,6 +45,17 @@ private
    	uri = URI.parse(@request_uri_str)
 	  response = Net::HTTP.get_response(uri)
 	  return JSON.parse(response.body)
+  end
+
+  def json_to_run_data(run_json)
+    activity_id = run_json["activityId"]
+    start_time   = DateTime.iso8601(run_json["startTime"]).new_offset("-05:00")
+    distance    = km_to_mi(run_json["metricSummary"]["distance"].to_f)
+    time        = DateTime.parse(run_json["metricSummary"]["duration"])
+    duration    = time.hour * 60 + time.min + (time.sec.to_f + time.to_time.nsec / 1e9) / 60.0
+    calories    = run_json["metricSummary"]["calories"].to_f
+
+    return RunData.new(activity_id, start_time, distance, duration, calories)
   end
 end
 

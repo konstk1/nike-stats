@@ -7,7 +7,7 @@ class NikeChartsController < ApplicationController
   end
 
   def index
-  	@distances = @nike.distanceByRun
+  	@distances = @nike.get_run_data
   end
   
 end

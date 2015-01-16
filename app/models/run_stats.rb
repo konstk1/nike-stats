@@ -1,0 +1,3 @@
+class RunStats
+
+end
