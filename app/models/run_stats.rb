@@ -14,9 +14,10 @@ class RunStats
   	  else
   	  	num_runs[d] = 1
   	  end
-
-  	  Rails.logger.info "D #{run.distance} Dist #{d} Count #{num_runs[d]}"
   	}
+  	
+  	# sort by distance (key)
+  	num_runs = Hash[num_runs.sort_by { |k, v| k }]
 
   	return num_runs.keys, num_runs.values
   end

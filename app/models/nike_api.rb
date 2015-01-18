@@ -6,7 +6,7 @@ class NikeApi
 
   def initialize(username:, password:)
     login_to_nike(username, password)
-    get_activity_list_json(count: 20)
+    get_activity_list_json(count: 999)
   end	
 
   def get_run_data
