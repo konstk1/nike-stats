@@ -6,10 +6,10 @@
 $(function() {
 	new Highcharts.Chart({
 		chart: {
-			renderTo: "chart1"
+			renderTo: "chartRunsByDistance"
 		},
 		series: [{
-			data: <%= @distances %>
+			data: [0,1,2,3] #<%= @distances %>
 		}],
 		credits: [{
 			enabled: false
