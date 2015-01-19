@@ -2,7 +2,7 @@ require "json"
 
 class NikeApi
   
-  RunData = Struct.new(:activityId, :startTime, :distance, :duration, :calories)
+  RunData = Struct.new(:activity_id, :start_time, :distance, :duration, :calories)
 
   def initialize(username:, password:)
     login_to_nike(username, password)
