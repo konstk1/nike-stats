@@ -45,11 +45,14 @@ class RunStats
   	grouped_by_wday = @run_data.group_by { |run| run.start_time.wday }
 
   	grouped_by_wday.each_pair { |wday, runs|
-  	  avg_distance[wday] = runs.reduce(0) { |sum, run| sum + run.distance } / runs.length
+  	  avg_distance[wday] = runs.reduce(0.0) { |sum, run| sum + run.distance } / runs.size
   	}
 
   	return $days_of_week, avg_distance
+  end
 
+  def pace_trend
+  	grouped_by_distance = @run_data.map { |run| run.distance }.group_by { |d| down_to_nearest_half(d) }
   end
 
 end

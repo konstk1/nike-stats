@@ -16,8 +16,8 @@ class NikeChartsController < ApplicationController
   	@distances,@num_runs = @run_stats.runs_by_distance
   	@days_of_week, @num_runs_wday = @run_stats.runs_by_day_of_week
   	@wday, @avg_distance = @run_stats.avg_distance_by_day_of_week
-  	logger.info @distances
-  	logger.info @num_runs
+
+  	@run_stats.pace_trend
   end
   
 end

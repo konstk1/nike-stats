@@ -4,16 +4,52 @@
 		"selected_items":
 		[
 			[
+				"group",
+				"grouped_by_distance"
+			],
+			[
+				"day",
+				"days_of_week"
+			],
+			[
+				"ea",
+				"ea	each { |e| .. }"
+			],
+			[
+				"chart",
+				"chartRunsByDistance"
+			],
+			[
+				"fun",
+				"fun	Function"
+			],
+			[
+				"so",
+				"sor	sort { |a, b| .. }"
+			],
+			[
+				"sor",
+				"sorb	sort_by { |e| .. }"
+			],
+			[
+				"run",
+				"run_data"
+			],
+			[
+				"acti",
+				"activity_id"
+			],
+			[
+				"new",
+				"new_offset"
+			],
+			[
 				"activ",
 				"activity_list_json"
 			],
 			[
 				"act",
 				"activity_list_json"
-			],
-			[
-				"ea",
-				"eawi	each_with_index { |e, i| .. }"
 			],
 			[
 				"login",
@@ -27,23 +63,24 @@
 			"file": "app/controllers/nike_charts_controller.rb",
 			"settings":
 			{
-				"buffer_size": 293,
+				"buffer_size": 656,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/run_stats.rb",
+			"settings":
+			{
+				"buffer_size": 1542,
+				"line_ending": "Unix",
+				"name": "class NikeStats"
 			}
 		},
 		{
 			"file": "app/models/nike_api.rb",
 			"settings":
 			{
-				"buffer_size": 1322,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/nike_charts/index.html.erb",
-			"settings":
-			{
-				"buffer_size": 117,
+				"buffer_size": 1960,
 				"line_ending": "Unix"
 			}
 		},
@@ -51,7 +88,7 @@
 			"file": "app/assets/javascripts/nike_charts.js",
 			"settings":
 			{
-				"buffer_size": 402,
+				"buffer_size": 2361,
 				"line_ending": "Unix"
 			}
 		}
@@ -89,14 +126,20 @@
 		"/Users/Kon/Developer/nike-stats/app/assets/javascripts",
 		"/Users/Kon/Developer/nike-stats/app/controllers",
 		"/Users/Kon/Developer/nike-stats/app/helpers",
+		"/Users/Kon/Developer/nike-stats/app/models",
 		"/Users/Kon/Developer/nike-stats/app/views",
+		"/Users/Kon/Developer/nike-stats/app/views/layouts",
 		"/Users/Kon/Developer/nike-stats/app/views/nike_charts",
+		"/Users/Kon/Developer/nike-stats/config",
 		"/Users/Kon/Developer/nike-stats/lib",
 		"/Users/Kon/Developer/nike-stats/lib/assets",
 		"/Users/Kon/Developer/nike-stats/lib/tasks"
 	],
 	"file_history":
 	[
+		"/Users/Kon/Developer/nike-stats/app/views/nike_charts/index.html.erb",
+		"/Users/Kon/Developer/nike-stats/config/secrets.yml",
+		"/Users/Kon/Developer/nike-stats/app/models/nike_api.rb",
 		"/Users/Kon/Developer/nike-stats/app/helpers/nike_charts_helper.rb",
 		"/Users/Kon/Developer/nike-stats/app/assets/javascripts/nike_charts.js.coffee"
 	],
@@ -106,9 +149,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -134,7 +178,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -143,15 +187,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 293,
+						"buffer_size": 656,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								257,
-								257
+								642,
+								642
 							]
 						],
 						"settings":
@@ -167,19 +211,48 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/models/nike_api.rb",
+					"file": "app/models/run_stats.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1322,
+						"buffer_size": 1542,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								781,
-								787
+								1186,
+								1186
+							]
+						],
+						"settings":
+						{
+							"auto_name": "class NikeStats",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 369.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/models/nike_api.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1960,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								499,
+								499
 							]
 						],
 						"settings":
@@ -196,57 +269,29 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/views/nike_charts/index.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 117,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								115,
-								115
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
 					"buffer": 3,
 					"file": "app/assets/javascripts/nike_charts.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 402,
+						"buffer_size": 2361,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								402,
-								402
+								703,
+								703
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 73.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
