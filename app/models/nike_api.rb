@@ -3,6 +3,7 @@ require "json"
 class NikeApi
   
   RunData = Struct.new(:activity_id, :start_time, :distance, :duration, :calories)
+  GpsPoint = Struct.new(:lat, :lon, :el)
 
   def initialize(username:, password:)
     login_to_nike(username, password)
@@ -19,6 +20,41 @@ class NikeApi
       end
     }
     return run_data
+  end
+
+  def get_gps_data(activity_id)
+    gps_data = Array.new
+
+    end_point = "https://api.nike.com/v1/me/sport/activities/#{activity_id}/gps"
+    gps_json = get_json_from_endpoint(end_point)
+
+    waypoints = gps_json["waypoints"]
+
+    if waypoints != nil
+      waypoints.each { |point|
+        gps_data.push(GpsPoint.new(point["latitude"], point["longitude"], point["elevation"]))
+      }
+    end
+
+    return gps_data
+  end
+
+  # test func
+  def log_gps_data
+    File.open("/Users/Kon/Developer/nike-stats/gps_data.txt", "w") { |io|
+      io.puts "activity_id, lat, lon, el\n"
+      @activity_list_json["data"].each_with_index { |run, i|
+        if run["activityType"] == "RUN"
+          activity_id = run["activityId"]
+          puts "[#{i}/#{@activity_list_json["data"].count}]: Getting gps for #{activity_id}"
+          gps_data = get_gps_data(activity_id)
+
+          gps_data.each { |point|
+            io.puts "#{activity_id}, #{point.lat}, #{point.lon}, #{point.el}\n"
+          }
+        end
+      }
+    }
   end
 
 private
@@ -40,7 +76,11 @@ private
   end
 
   def get_json_from_endpoint(endpoint_uri_str)
-    @request_uri_str = endpoint_uri_str + "&access_token=#{@@access_token}"
+    join_char = '?'
+    if endpoint_uri_str.index('?') != nil
+      join_char = '&'
+    end
+    @request_uri_str = endpoint_uri_str + join_char + "access_token=#{@@access_token}"
    	uri = URI.parse(@request_uri_str)
 	  response = Net::HTTP.get_response(uri)
 	  return JSON.parse(response.body)
@@ -48,7 +88,7 @@ private
 
   def json_to_run_data(run_json)
     activity_id = run_json["activityId"]
-    start_time   = DateTime.iso8601(run_json["startTime"]).new_offset("-05:00")
+    start_time  = DateTime.iso8601(run_json["startTime"]).new_offset("-05:00")
     distance    = km_to_mi(run_json["metricSummary"]["distance"].to_f)
     duration    = str_to_mins(run_json["metricSummary"]["duration"])
     calories    = run_json["metricSummary"]["calories"].to_f
