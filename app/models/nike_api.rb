@@ -1,7 +1,10 @@
 require "json"
 
 class NikeApi
-  
+
+  # TODO: when getting gps, get timezone based on first lat/lon and update start_time
+  # TODO: get city based on lat/lon
+
   RunData = Struct.new(:activity_id, :start_time, :distance, :duration, :calories)
   GpsPoint = Struct.new(:lat, :lon, :el)
 
@@ -41,20 +44,20 @@ class NikeApi
 
   # test func
   def log_gps_data
-    File.open("/Users/Kon/Developer/nike-stats/gps_data.txt", "w") { |io|
-      io.puts "activity_id, lat, lon, el\n"
-      @activity_list_json["data"].each_with_index { |run, i|
-        if run["activityType"] == "RUN"
-          activity_id = run["activityId"]
-          puts "[#{i}/#{@activity_list_json["data"].count}]: Getting gps for #{activity_id}"
-          gps_data = get_gps_data(activity_id)
+    run_data = get_run_data()
 
-          gps_data.each { |point|
-            io.puts "#{activity_id}, #{point.lat}, #{point.lon}, #{point.el}\n"
-          }
-        end
+    File.open("/Users/Kon/Developer/nike-stats/gps_data_kon.txt", "w") { |io|
+      io.puts "run_num, lat, lon, el, activity_id\n"
+      run_data.each_with_index { |run, i|
+        puts "[#{i+1}/#{run_data.count}]: Getting gps for #{run.activity_id}"
+        gps_data = get_gps_data(run.activity_id)
+        gps_data.each { |point|
+          io.puts "#{i+1}, #{point.lat}, #{point.lon}, #{point.el}, #{run.activity_id}\n"
+        }
       }
     }
+
+    return "Done"
   end
 
 private
