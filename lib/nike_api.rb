@@ -85,6 +85,7 @@ private
       join_char = '&'
     end
     @request_uri_str = endpoint_uri_str + join_char + "access_token=#{@@access_token}"
+    Rails.logger.info "Loading URI: #{@request_uri_str}"
    	uri = URI.parse(@request_uri_str)
 	  response = Net::HTTP.get_response(uri)
 	  JSON.parse(response.body)

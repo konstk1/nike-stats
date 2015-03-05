@@ -10,7 +10,7 @@ class RunStats
   	num_runs = Hash.new
 
   	@run_data.each { |run|  
-  	  d = down_to_nearest_half(run.distance)
+  	  d = Utils::down_to_nearest_half(run.distance)
   	  if num_runs[d]
   	  	num_runs[d] += 1
   	  else
@@ -38,7 +38,7 @@ class RunStats
 
   	num_runs = Hash[num_runs.sort_by { |k, v| k }]
 
-  	return num_runs.keys.map { |e| $days_of_week[e] }, num_runs.values
+  	return num_runs.keys.map { |e| Utils::DAYS_OF_WEEK[e] }, num_runs.values
   end
 
   def avg_distance_by_day_of_week
@@ -50,19 +50,13 @@ class RunStats
   	  avg_distance[wday] = runs.reduce(0.0) { |sum, run| sum + run.distance } / runs.size
   	}
 
-  	return $days_of_week, avg_distance
+  	return Utils::DAYS_OF_WEEK, avg_distance
   end
 
   def pace_trend
-  	grouped_by_distance = @run_data.map { |run| run.distance }.group_by { |d| down_to_nearest_half(d) }
+  	grouped_by_distance = @run_data.map { |run| run.distance }.group_by { |d| Utils::down_to_nearest_half(d) }
   end
 
-end
-
-$days_of_week = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-
-def down_to_nearest_half (x)
-  return (x - x.floor).round/2.0 + x.floor
 end
 
 # function distanceToColor (dist)
