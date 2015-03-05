@@ -4,7 +4,7 @@ class CreateNikeRuns < ActiveRecord::Migration
       t.string 		:activity_id
       t.datetime 	:start_time_utc
       t.string		:device_type
-      t.float		:distance_mi
+      t.float		  :distance_mi
       t.integer		:calories
       t.float 		:duration_mins
       t.string		:shoes
