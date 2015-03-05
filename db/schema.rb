@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305181421) do
+ActiveRecord::Schema.define(version: 20150305204946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "nike_runs", force: :cascade do |t|
     t.string   "activity_id"
@@ -22,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150305181421) do
     t.string   "device_type"
     t.float    "distance_mi"
     t.integer  "calories"
-    t.float    "duration_mins"
+    t.float    "duration_min"
     t.string   "shoes"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

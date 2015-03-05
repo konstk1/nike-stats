@@ -11,8 +11,14 @@ class NikeApi
 
   def initialize(username:, password:)
     login_to_nike(username, password)
-    get_activity_list_json(count: 999)
-  end	
+    #get_activity_list_json(count: 999)
+  end
+
+  def get_activity_list_json(count:)
+    end_point = "https://api.nike.com/v1/me/sport/activities/RUNNING" + "?count=#{count}"
+    activity_list_json = get_json_from_endpoint(end_point)
+    activity_list_json["data"].reverse
+  end
 
   def get_run_data
     run_data = Array.new
@@ -72,11 +78,6 @@ private
     else
        Rails.logger.debug "Acces Token is" + @@access_token
     end
-  end
-
-  def get_activity_list_json(count:)
-    end_point = "https://api.nike.com/v1/me/sport/activities" + "?count=#{count}"
-    @activity_list_json = get_json_from_endpoint(end_point)
   end
 
   def get_json_from_endpoint(endpoint_uri_str)
