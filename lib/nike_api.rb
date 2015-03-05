@@ -1,4 +1,5 @@
-require "json"
+require 'json'
+require 'utils'
 
 class NikeApi
 
@@ -22,7 +23,7 @@ class NikeApi
         i = i + 1
       end
     }
-    return run_data
+    run_data
   end
 
   def get_gps_data(activity_id)
@@ -39,7 +40,7 @@ class NikeApi
       }
     end
 
-    return gps_data
+    gps_data
   end
 
   # test func
@@ -57,7 +58,7 @@ class NikeApi
       }
     }
 
-    return "Done"
+    "Done"
   end
 
 private
@@ -86,26 +87,17 @@ private
     @request_uri_str = endpoint_uri_str + join_char + "access_token=#{@@access_token}"
    	uri = URI.parse(@request_uri_str)
 	  response = Net::HTTP.get_response(uri)
-	  return JSON.parse(response.body)
+	  JSON.parse(response.body)
   end
 
   def json_to_run_data(run_json)
     activity_id = run_json["activityId"]
     start_time  = DateTime.iso8601(run_json["startTime"]).new_offset("-05:00")
-    distance    = km_to_mi(run_json["metricSummary"]["distance"].to_f)
-    duration    = str_to_mins(run_json["metricSummary"]["duration"])
+    distance    = Utils::km_to_mi(run_json["metricSummary"]["distance"].to_f)
+    duration    = Utils::str_to_mins(run_json["metricSummary"]["duration"])
     calories    = run_json["metricSummary"]["calories"].to_f
 
-    return RunData.new(activity_id, start_time, distance, duration, calories)
+    RunData.new(activity_id, start_time, distance, duration, calories)
   end
 end
 
-def km_to_mi(km)
-  return km * 0.621371
-end
-
-def str_to_mins (str)
-  # string format is hh:mm:ss.SSS
-  str = str.split(':');
-  return 60*str[0].to_f + 1*str[1].to_f + str[2].to_f/60;
-end

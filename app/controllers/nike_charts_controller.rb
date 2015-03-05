@@ -1,3 +1,6 @@
+require 'nike_api'
+require 'run_stats'
+
 class NikeChartsController < ApplicationController
   @@nike = nil
   def initialize

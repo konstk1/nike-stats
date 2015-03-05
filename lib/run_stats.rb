@@ -1,3 +1,5 @@
+require 'utils'
+
 class RunStats
 
   def initialize(run_data)
