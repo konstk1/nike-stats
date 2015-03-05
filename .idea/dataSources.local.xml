@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - nike_dev@localhost" uuid="01eddbef-a30b-486b-9359-fa3cfb635f4c">
+      <secret-storage>master_key</secret-storage>
+      <schema-pattern>nike_dev.*</schema-pattern>
+      <default-schemas>nike_dev.*</default-schemas>
+    </data-source>
+  </component>
+</project>
