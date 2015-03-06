@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :nike_goals
+
   get 'nike_charts/index'
   get 'nike_charts' => 'nike_charts#index'
 

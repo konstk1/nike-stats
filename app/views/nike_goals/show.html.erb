@@ -1,0 +1,31 @@
+<h1>Showing Goals</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @goal.title %>
+</p>
+
+<p>
+  <strong>Start Date:</strong>
+  <%= @goal.start_time_utc %>
+</p>
+
+<p>
+  <strong>End Date:</strong>
+  <%= @goal.end_time_utc %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @goal.duration_wk %> weeks
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @goal.distance_mi %> miles
+</p>
+
+<!--t.float    "distance_mi"-->
+<!--t.float    "duration_wk"-->
+<!--t.datetime "start_time_utc"-->
+<!--t.datetime "end_time_utc"-->

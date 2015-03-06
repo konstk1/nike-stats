@@ -11,11 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305204946) do
+ActiveRecord::Schema.define(version: 20150306201559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "nike_goals", force: :cascade do |t|
+    t.float    "distance_mi"
+    t.float    "duration_wk"
+    t.datetime "start_time_utc"
+    t.datetime "end_time_utc"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "title"
+  end
 
   create_table "nike_runs", force: :cascade do |t|
     t.string   "activity_id"

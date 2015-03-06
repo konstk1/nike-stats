@@ -1,0 +1,27 @@
+<h1>New Goal</h1>
+
+<%= form_for :nike_goal, url: nike_goals_path do |f| %>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+
+    <p>
+      <%= f.label :start_date_time %><br>
+      <%= f.datetime_field :start_date_time %>
+    </p>
+
+    <p>
+      <%= f.label :duration_weeks %><br>
+      <%= f.number_field :duration_weeks %>
+    </p>
+
+    <p>
+      <%= f.label :distance_miles %><br>
+      <%= f.number_field :distance_miles %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

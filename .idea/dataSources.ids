@@ -2403,6 +2403,29 @@
       <column name="geom" sqlType="geometry" precision="2147483647" scale="0" nullable="true" jdbcType="1111"/>
       <column name="val" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
     </table>
+    <table name="nike_goals" schema="public" catalog="nike_dev" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnbmlrZV9nb2Fsc19pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
+      <column name="distance_mi" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
+      <column name="duration_wk" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
+      <column name="start_time_utc" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="end_time_utc" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="title" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="nike_goals_pkey" columns="id"/>
+    </table>
+    <table name="nike_goals_id_seq" schema="public" catalog="nike_dev" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
     <table name="nike_runs" schema="public" catalog="nike_dev" type="TABLE">
       <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnbmlrZV9ydW5zX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
       <column name="activity_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
