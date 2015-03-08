@@ -4,7 +4,7 @@ require 'run_stats'
 class NikeChartsController < ApplicationController
   @@nike = nil
   def initialize
-    NikeSync.sync
+    @num_new_runs = NikeSync.sync
   	# for now, don't reload data every time
   	# if @@nike.nil?
   	#   @@nike = NikeApi.new(username: Rails.application.secrets.nike_user_name,

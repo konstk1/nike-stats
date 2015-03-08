@@ -11,4 +11,8 @@ class NikeGoal < ActiveRecord::Base
     goal.save
     goal
   end
+
+  def get_runs
+    runs = NikeRun.where(start_time: start_time...end_time).order(:start_time)
+  end
 end

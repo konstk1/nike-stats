@@ -1,4 +1,4 @@
-<h1>Showing Goals</h1>
+<h1>Showing Goal</h1>
 
 <p>
   <strong>Title:</strong>
@@ -25,7 +25,9 @@
   <%= @goal.distance_mi %> miles
 </p>
 
-<!--t.float    "distance_mi"-->
-<!--t.float    "duration_wk"-->
-<!--t.datetime "start_time_utc"-->
-<!--t.datetime "end_time_utc"-->
+<p>
+  <strong>Run Stats:</strong> <br>
+  &nbsp&nbsp&nbsp&nbsp<%= @goal.get_runs.count %> runs <br>
+  &nbsp&nbsp&nbsp&nbsp<%= @goal.get_runs.map { |r| r.distance_mi}.sum.round(1) %> miles
+</p>
+

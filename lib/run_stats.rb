@@ -19,7 +19,7 @@ class RunStats
   	}
   	
   	# sort by distance (key)
-  	num_runs = Hash[num_runs.sort_by { |k, v| k }]
+  	num_runs = Hash[num_runs.sort_by { |k, _| k }]
 
   	return num_runs.keys, num_runs.values
   end
@@ -36,7 +36,7 @@ class RunStats
   	  end
   	}
 
-  	num_runs = Hash[num_runs.sort_by { |k, v| k }]
+  	num_runs = Hash[num_runs.sort_by { |k, _| k }]
 
   	return num_runs.keys.map { |e| Utils::DAYS_OF_WEEK[e] }, num_runs.values
   end

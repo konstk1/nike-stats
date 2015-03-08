@@ -14,6 +14,8 @@ class NikeGoalsController < ApplicationController
 
   def show
     @goal = NikeGoal.find(params[:id])
+
+    runs = @goal.get_runs
   end
 
   private

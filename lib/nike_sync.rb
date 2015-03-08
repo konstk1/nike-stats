@@ -5,32 +5,30 @@ class NikeSync
   # Look at rspec
 
   def self.sync
-      puts 'looking for runs'
-      latest_run = NikeRun.last
+    new_run_count = 0
+    nike = NikeApi.new(username: Rails.application.secrets.nike_user_name,
+                       password: Rails.application.secrets.nike_password)
 
-      nike = NikeApi.new(username: Rails.application.secrets.nike_user_name,
-                         password: Rails.application.secrets.nike_password)
+    latest_run = NikeRun.last
 
-      if latest_run.present?
-        puts "Runs found"
-        runs = nike.get_activity_list_json(start_date: NikeRun.last.start_time, end_date: Date.today)
-      else
-        puts 'Nothing found'
-        runs = nike.get_activity_list_json(count: 9999)
-      end
+    if latest_run.present?
+      puts "Runs found"
+      runs = nike.get_activity_list_json(start_date: NikeRun.last.start_time, end_date: Date.today)
+    else
+      puts 'Nothing found'
+      runs = nike.get_activity_list_json(count: 9999)
+    end
 
-      unless runs.nil?
-        runs.each { |run_json|
-          NikeRun.create_from_json(run_json)
-        }
-      end
+    unless runs.nil?
+      runs.each { |run_json|
+        r = NikeRun.create_from_json(run_json)
+        if r.errors.count == 0
+          new_run_count += 1
+        end
+      }
+    end
 
-    # find most recent run in db
-    # request all activity from that date to today
-    # if db empty, request all activity
-
-    # handle overlapping runs
-    # populate new runs into model
+    new_run_count
   end
 
 end
