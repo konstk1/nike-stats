@@ -12,13 +12,16 @@ class NikeSync
                          password: Rails.application.secrets.nike_password)
 
       if latest_run.present?
-        puts "Run found #{latest_run}"
-        # grab date
+        puts "Runs found"
+        runs = nike.get_activity_list_json(start_date: NikeRun.last.start_time, end_date: Date.today)
       else
         puts 'Nothing found'
-        nike.get_activity_list_json(count: 999).each { |run_json|
+        runs = nike.get_activity_list_json(count: 999)
+      end
+
+      unless runs.nil?
+        runs.each { |run_json|
           run = NikeRun.create_from_json(run_json)
-          puts "Created ID: #{run.activity_id}"
         }
       end
 

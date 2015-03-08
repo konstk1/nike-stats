@@ -11,13 +11,23 @@ class NikeApi
 
   def initialize(username:, password:)
     login_to_nike(username, password)
-    #get_activity_list_json(count: 999)
   end
 
   def get_activity_list_json(count:)
     end_point = "https://api.nike.com/v1/me/sport/activities/RUNNING" + "?count=#{count}"
     activity_list_json = get_json_from_endpoint(end_point)
-    activity_list_json["data"].reverse
+    activity_list_json["data"].reverse   # return in chronological order
+  end
+
+  def get_activity_list_json(start_date:, end_date:)
+    count = 99999
+    start_date_str = start_date.strftime("%Y-%m-%d")
+    end_date_str   =   end_date.strftime("%Y-%m-%d")
+
+    end_point = "https://api.nike.com/v1/me/sport/activities/RUNNING" +
+                "?count=#{count}&startDate=#{start_date_str}&endDate=#{end_date_str}"
+    activity_list_json = get_json_from_endpoint(end_point)
+    activity_list_json["data"].reverse   # return in chronological order
   end
 
   def get_run_data

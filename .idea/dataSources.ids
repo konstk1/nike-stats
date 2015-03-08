@@ -2407,8 +2407,8 @@
       <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnbmlrZV9nb2Fsc19pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
       <column name="distance_mi" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
       <column name="duration_wk" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
-      <column name="start_time_utc" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
-      <column name="end_time_utc" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="start_time" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="end_time" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="title" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
@@ -2429,7 +2429,7 @@
     <table name="nike_runs" schema="public" catalog="nike_dev" type="TABLE">
       <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnbmlrZV9ydW5zX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
       <column name="activity_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
-      <column name="start_time_utc" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="start_time" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
       <column name="device_type" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="distance_mi" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
       <column name="calories" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
