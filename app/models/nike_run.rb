@@ -1,6 +1,8 @@
 class NikeRun < ActiveRecord::Base
   validates :activity_id, uniqueness: true
 
+  # TODO: create index on start time
+
   def self.create_from_json(run_json)
     nike_run = NikeRun.new
 

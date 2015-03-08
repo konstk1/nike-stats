@@ -30,18 +30,6 @@ class NikeApi
     activity_list_json["data"].reverse   # return in chronological order
   end
 
-  def get_run_data
-    run_data = Array.new
-    i = 0
-    @activity_list_json["data"].reverse.each { |run| 
-      if run["activityType"] == "RUN"
-        run_data[i] = json_to_run_data(run)
-        i = i + 1
-      end
-    }
-    run_data
-  end
-
   def get_gps_data(activity_id)
     gps_data = Array.new
 
@@ -61,7 +49,7 @@ class NikeApi
 
   # test func
   def log_gps_data
-    run_data = get_run_data()
+    run_data = get_run_data
 
     File.open("/Users/Kon/Developer/nike-stats/gps_data_kon.txt", "w") { |io|
       io.puts "run_num, lat, lon, el, activity_id\n"
@@ -86,7 +74,7 @@ private
 	    response = Net::HTTP.post_form(uri,  {"username" => username, "password" => password})
 	    @@access_token = JSON.parse(response.body)["access_token"]
     else
-       Rails.logger.debug "Acces Token is" + @@access_token
+       Rails.logger.debug "Access Token is" + @@access_token
     end
   end
 
@@ -102,14 +90,5 @@ private
 	  JSON.parse(response.body)
   end
 
-  def json_to_run_data(run_json)
-    activity_id = run_json["activityId"]
-    start_time  = DateTime.iso8601(run_json["startTime"]).new_offset("-05:00")
-    distance    = Utils::km_to_mi(run_json["metricSummary"]["distance"].to_f)
-    duration    = Utils::str_to_mins(run_json["metricSummary"]["duration"])
-    calories    = run_json["metricSummary"]["calories"].to_f
-
-    RunData.new(activity_id, start_time, distance, duration, calories)
-  end
 end
 

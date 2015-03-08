@@ -10,7 +10,7 @@ class RunStats
   	num_runs = Hash.new
 
   	@run_data.each { |run|  
-  	  d = Utils::down_to_nearest_half(run.distance)
+  	  d = Utils::down_to_nearest_half(run.distance_mi)
   	  if num_runs[d]
   	  	num_runs[d] += 1
   	  else
@@ -47,14 +47,14 @@ class RunStats
   	grouped_by_wday = @run_data.group_by { |run| run.start_time.wday }
 
   	grouped_by_wday.each_pair { |wday, runs|
-  	  avg_distance[wday] = runs.reduce(0.0) { |sum, run| sum + run.distance } / runs.size
+  	  avg_distance[wday] = runs.reduce(0.0) { |sum, run| sum + run.distance_mi } / runs.size
   	}
 
   	return Utils::DAYS_OF_WEEK, avg_distance
   end
 
   def pace_trend
-  	grouped_by_distance = @run_data.map { |run| run.distance }.group_by { |d| Utils::down_to_nearest_half(d) }
+  	 @run_data.map { |run| run.distance_mi }.group_by { |d| Utils::down_to_nearest_half(d) }
   end
 
 end
