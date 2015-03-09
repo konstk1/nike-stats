@@ -6,7 +6,7 @@ class NikeGoal < ActiveRecord::Base
     goal.duration_wk = params[:duration_weeks]
     goal.distance_mi = params[:distance_miles]
 
-    goal.end_time    = (goal.start_time + goal.duration_wk.weeks).end_of_day
+    goal.end_time    = (goal.start_time + goal.duration_wk.weeks)
 
     goal.save
     goal
