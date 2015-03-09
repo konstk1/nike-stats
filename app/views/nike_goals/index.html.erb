@@ -10,6 +10,7 @@
       <tr>
         <td><%= goal.title %></td>
         <td><%= goal.distance_mi %> miles</td>
+        <td><%= link_to 'View', goal, data: { no_turbolink: true } %></td>
       </tr>
   <% end %>
 </table>

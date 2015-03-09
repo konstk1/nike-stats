@@ -13,7 +13,7 @@ function chartGoalBurndown() {
     options.xAxis.title.text = 'Date';
     options.yAxis.title.text = 'Distance (mi)';
     options.series.push({
-        name: "Ideal",
+        name: "Plan",
         color: "Blue",
         pointStart: gon.goal_start_date,
         pointInterval: gon.goal_date_interval,
@@ -33,10 +33,20 @@ var defaultGoalChartOptions = {
     chart: {
         panning:  true,
         panKey:   "shift",
-        zoomType: "xy"
+        zoomType: "x"
     },
     legend: {
-        enabled: false
+        enabled: true,
+        borderWidth: 1,
+        backgroundColor: '#FFFFFF',
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        floating: true,
+        itemMarginTop: 3,
+        itemMarginBottom: 3,
+        x: 80,
+        y: 50
     },
     title: {
         text: 'Chart Title'
@@ -58,8 +68,7 @@ var defaultGoalChartOptions = {
         minorGridLineWidth: .5,
         minorTickInterval: 'auto'
     },
-    series: [{
-    }],
+    series: [],
     plotOptions: {
         series: {
             dataLabels: {
@@ -67,20 +76,22 @@ var defaultGoalChartOptions = {
             },
             marker: {
                 enabled: false,
-                symbol: 'circle'
+                symbol: 'circle',
+                radius: 1
             },
             states: {
                 hover: {
                     halo: false,
-                    lineWidthPlus: 2
+                    lineWidthPlus: 0
                 }
             }
         }
     },
     tooltip: {
         enabled: true,
-        crosshairs: true,
-        valueDecimals: 2,
+        crosshairs: [true, true],
+        shared: true,
+        valueDecimals: 1,
         valueSuffix: ' mi'
     },
     credits: [{
