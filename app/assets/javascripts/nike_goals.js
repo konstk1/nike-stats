@@ -64,16 +64,24 @@ var defaultGoalChartOptions = {
         series: {
             dataLabels: {
                 enabled: false
-            }
-        },
-        line: {
+            },
             marker: {
-                enabled: false
+                enabled: false,
+                symbol: 'circle'
+            },
+            states: {
+                hover: {
+                    halo: false,
+                    lineWidthPlus: 2
+                }
             }
         }
     },
     tooltip: {
-        enabled: true
+        enabled: true,
+        crosshairs: true,
+        valueDecimals: 2,
+        valueSuffix: ' mi'
     },
     credits: [{
         enabled: false
