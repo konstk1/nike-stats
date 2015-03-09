@@ -1,0 +1,6 @@
+Plan:
+
+- Store access token in database (with user and expiration date), only authenticate if expired
+- Create landing page
+
+- Background nike sync
