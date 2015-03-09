@@ -38,7 +38,7 @@ class NikeApi
 
     waypoints = gps_json["waypoints"]
 
-    if waypoints != nil
+    unless waypoints.nil?
       waypoints.each { |point|
         gps_data.push(GpsPoint.new(point["latitude"], point["longitude"], point["elevation"]))
       }
@@ -49,7 +49,7 @@ class NikeApi
 
   # test func
   def log_gps_data
-    run_data = get_run_data
+    run_data = NikeRun.all
 
     File.open("/Users/Kon/Developer/nike-stats/gps_data_kon.txt", "w") { |io|
       io.puts "run_num, lat, lon, el, activity_id\n"
@@ -71,7 +71,7 @@ private
   def login_to_nike(username, password)
     if @@access_token == ""
   	  uri = URI.parse('https://developer.nike.com/services/login')
-	    response = Net::HTTP.post_form(uri,  {"username" => username, "password" => password})
+	    response = Net::HTTP.post_form(uri,  {:username => username, :password => password})
 	    @@access_token = JSON.parse(response.body)["access_token"]
     else
        Rails.logger.debug "Access Token is" + @@access_token

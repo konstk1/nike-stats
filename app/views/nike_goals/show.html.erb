@@ -28,6 +28,13 @@
 <p>
   <strong>Run Stats:</strong> <br>
   &nbsp&nbsp&nbsp&nbsp<%= @goal.get_runs.count %> runs <br>
-  &nbsp&nbsp&nbsp&nbsp<%= @goal.get_runs.map { |r| r.distance_mi}.sum.round(1) %> miles
+  &nbsp&nbsp&nbsp&nbsp<%= @goal.get_runs.map { |r| r.distance_mi}.sum.round(2) %> miles
 </p>
+
+<p>
+  <strong>Chart:</strong>
+<div id="goalChart" style="width: 1000px; height: 500px; display: inline-block"> </div>
+
+</p>
+
 
