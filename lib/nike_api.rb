@@ -10,16 +10,28 @@ class NikeApi
   GpsPoint = Struct.new(:lat, :lon, :el)
 
   def initialize(username:, password:)
-    login_to_nike(username, password)
+    @user = User.find_by(nike_username: username)
+    if @user.nil?
+      @user = User.new
+      @user.nike_username = username
+    end
+
+    if @user.need_token?
+      access_token, expires_at = login_to_nike(username, password)
+      @user.nike_access_token = access_token
+      @user.token_expiration_time = expires_at
+      @user.save
+    end
+
   end
 
-  def get_activity_list_json(count:)
+  def get_activity_list_json_with_count(count:)
     end_point = "https://api.nike.com/v1/me/sport/activities/RUNNING" + "?count=#{count}"
     activity_list_json = get_json_from_endpoint(end_point)
     activity_list_json["data"].reverse   # return in chronological order
   end
 
-  def get_activity_list_json(start_date:, end_date:)
+  def get_activity_list_json_with_dates(start_date:, end_date:)
     count = 99999
     start_date_str = start_date.strftime("%Y-%m-%d")
     end_date_str   =   end_date.strftime("%Y-%m-%d")
@@ -66,16 +78,15 @@ class NikeApi
   end
 
 private
-  @@access_token = ""
 
   def login_to_nike(username, password)
-    if @@access_token == ""
-  	  uri = URI.parse('https://developer.nike.com/services/login')
-	    response = Net::HTTP.post_form(uri,  {:username => username, :password => password})
-	    @@access_token = JSON.parse(response.body)["access_token"]
-    else
-       Rails.logger.debug "Access Token is" + @@access_token
-    end
+    uri = URI.parse('https://developer.nike.com/services/login')
+    response = Net::HTTP.post_form(uri, {username: username, password: password})
+
+    access_token = JSON.parse(response.body)["access_token"]
+    expires_at = DateTime.now.utc + JSON.parse(response.body)["expires_in"].to_i.seconds
+
+    return access_token, expires_at
   end
 
   def get_json_from_endpoint(endpoint_uri_str)
@@ -83,7 +94,7 @@ private
     if endpoint_uri_str.index('?') != nil
       join_char = '&'
     end
-    @request_uri_str = endpoint_uri_str + join_char + "access_token=#{@@access_token}"
+    @request_uri_str = endpoint_uri_str + join_char + "access_token=#{@user.nike_access_token}"
     Rails.logger.info "Loading URI: #{@request_uri_str}"
    	uri = URI.parse(@request_uri_str)
 	  response = Net::HTTP.get_response(uri)

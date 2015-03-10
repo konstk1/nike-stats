@@ -13,10 +13,10 @@ class NikeSync
 
     if latest_run.present?
       puts "Runs found"
-      runs = nike.get_activity_list_json(start_date: NikeRun.last.start_time, end_date: Date.today)
+      runs = nike.get_activity_list_json_with_dates(start_date: NikeRun.last.start_time, end_date: Date.today)
     else
       puts 'Nothing found'
-      runs = nike.get_activity_list_json(count: 9999)
+      runs = nike.get_activity_list_json_with_count(count: 9999)
     end
 
     unless runs.nil?

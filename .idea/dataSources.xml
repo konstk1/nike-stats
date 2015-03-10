@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1747760504">
+  <component name="DataSourceManagerImpl" format="xml" hash="1891088833">
     <data-source source="LOCAL" name="PostgreSQL - nike_dev@localhost" uuid="01eddbef-a30b-486b-9359-fa3cfb635f4c">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
