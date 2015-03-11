@@ -5,9 +5,9 @@
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="/">Nike Charts</a></li>
-        <li><a href="/nike_goals">Nike Goals</a></li>
+        <li class="<%= 'active' if current_page?(root_path) %>"><a href="/">Home</a></li>
+        <li class="<%= 'active' if current_page?(nike_charts_path) %>"><a href="/">Nike Charts</a></li>
+        <li class="<%= 'active' if current_page?(nike_goals_path) %>"><a href="/nike_goals">Nike Goals</a></li>
       </ul>
     </div>
   </div>
