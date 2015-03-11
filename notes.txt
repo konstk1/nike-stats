@@ -1,6 +1,17 @@
 Plan:
 
-- Create landing page
+- Create landing page (UI)
+  - top-fixed nav bar
+  - glyphicons
+
+- Goal UI
+  - left selectable list (with stats)
+  - right chart of selected goal
+  - right (maybe more data)
+
 - Goal chart min y = 0
 
 - Background nike sync
+
+- Minify/compile javascript/css
+- Deploy

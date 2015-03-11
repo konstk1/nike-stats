@@ -1,9 +1,12 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Kon">
     <words>
+      <w>autoprefixer</w>
       <w>darkred</w>
       <w>highcharts</w>
       <w>mins</w>
+      <w>navbar</w>
+      <w>postgis</w>
       <w>turbolinks</w>
       <w>waypoints</w>
     </words>
