@@ -16,13 +16,13 @@
     </div>
     <div class="col-md-6">
       <br>
-      <p>207</p>
-      <p>720 miles</p>
+      <p><%= @num_runs %></p>
+      <p><%= @total_distance %> miles</p>
       <br>
-      <p>3.5 mi/run</p>
-      <p>8:30 per mile</p>
+      <p><%= @avg_distance %> mi/run</p>
+      <p><%= @avg_pace %> per mile</p>
       <br>
-      <p> Mar 9, 2015 (3 days ago)</p>
+      <p><%= @last_run_time.strftime("%a, %b %d, %I:%M %p") %> (<%= @days_ago %>)</p>
     </div>
   </div>
   <div class="col-md-6 card">
