@@ -17,6 +17,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$bg_color: #eaeaea;
+$card_border_color: #bababa;
+
 body {
   padding-top: 40px;
+  background-color: $bg_color;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 5px solid $bg_color;
+  box-shadow:         inset 0 0 0 1px $card_border_color;
+  -webkit-box-shadow: inset 0 0 0 1px $card_border_color;
+  -moz-box-shadow:    inset 0 0 0 1px $card_border_color;
 }
