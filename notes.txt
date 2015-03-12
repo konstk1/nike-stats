@@ -1,8 +1,7 @@
 Plan:
 
 - Create landing page (UI)
-  - top-fixed nav bar
-  - glyphicons
+  - Current goal partial
 
 - Goal UI
   - left selectable list (with stats)
@@ -12,6 +11,9 @@ Plan:
 - Goal chart min y = 0
 
 - Background nike sync
+  - using sync button
+
+- Add index (start time) to NikeRun
 
 - Minify/compile javascript/css
 

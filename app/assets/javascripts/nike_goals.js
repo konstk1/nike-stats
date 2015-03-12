@@ -31,6 +31,7 @@ function chartGoalBurndown() {
 
 var defaultGoalChartOptions = {
     chart: {
+        type: 'spline',
         panning:  true,
         panKey:   "shift",
         zoomType: "x"
