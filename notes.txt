@@ -1,7 +1,7 @@
 Plan:
 
 - Create landing page (UI)
-  - Grey bg, white note cards (Bootcards?)
+  - Bootcards?
   - Current goal partial
     - Rotary % indicator (current vs plan) (with mi)
 

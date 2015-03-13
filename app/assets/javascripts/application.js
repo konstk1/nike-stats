@@ -19,7 +19,20 @@
 
 $(function() {
     $('#sync_btn').on('click', function () {
-        $('#sync_icon').animate({rotation: "90"}, 500);
+        console.log("Animating...");
+        $('#sync_icon').animate({rotation: "+=360"}, {step: function(angle, fx) {
+            console.log(angle);
+            $(this).css({
+                "-moz-transform":"rotate("+angle+"deg)",
+                "-webkit-transform":"rotate("+angle+"deg)",
+                "-ms-transform":"rotate("+angle+"deg)",
+                "-o-transform":"rotate("+angle+"deg)"
+            });
+        }, complete: function() {
+          console.log("Rotation complete.");
+        }, duration: 1000});
+
+
         $.ajax({
             url: '/sync',
             success: function (data) {
@@ -28,4 +41,8 @@ $(function() {
         });
     });
 });
+
+//function rotate(object, degrees) {
+//    object.animate
+//}
 
