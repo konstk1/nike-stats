@@ -24,4 +24,22 @@ class NikeRun < ActiveRecord::Base
     nike_run
   end
 
+  def self.total_distance
+    @@total_distance = NikeRun.sum(:distance_mi).round(1)
+  end
+
+  def self.avg_distance
+    NikeRun.count > 0 ? NikeRun.average(:distance_mi) : 0.0
+  end
+
+  def self.avg_pace
+    if @@total_distance.nil?
+      total_distance
+    end
+
+    NikeRun.count > 0 ? Time.at(NikeRun.sum(:duration_min) / @@total_distance * 60) : Time.at(0).utc
+  end
+
+  private
+    @@total_distance = nil
 end

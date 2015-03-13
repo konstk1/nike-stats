@@ -17,32 +17,44 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+var alert_timeout_ms = 5000;
+
 $(function() {
     $('#sync_btn').on('click', function () {
-        console.log("Animating...");
         $('#sync_icon').animate({rotation: "+=360"}, {step: function(angle, fx) {
-            console.log(angle);
-            $(this).css({
-                "-moz-transform":"rotate("+angle+"deg)",
-                "-webkit-transform":"rotate("+angle+"deg)",
-                "-ms-transform":"rotate("+angle+"deg)",
-                "-o-transform":"rotate("+angle+"deg)"
-            });
-        }, complete: function() {
-          console.log("Rotation complete.");
-        }, duration: 1000});
-
+            rotate($(this), angle);
+        }, complete: function() { }, duration: 1000});
 
         $.ajax({
             url: '/sync',
             success: function (data) {
-                console.log(data);
+                if (data.num_new_runs == 0) {
+                    show_alert("info", "No new runs.", alert_timeout_ms);
+                } else if (data.num_new_runs < 0) {
+                    show_alert("danger", "Failed to sync!", alert_timeout_ms);
+                } else {
+                    show_alert("success", "Synced "+data.num_new_runs+" new runs!", alert_timeout_ms);
+                    if (data.num_new_runs > 0){
+                        location.reload();
+                    }
+                }
             }
         });
     });
 });
 
-//function rotate(object, degrees) {
-//    object.animate
-//}
+function show_alert(type, message, timeout) {
+    $('#top-alert').html('<div class="alert alert-'+type+'" role="alert">'+message+'</div>');
+    setTimeout(function() {
+        $('.alert').remove();
+    }, timeout);
+}
+function rotate($object, angle) {
+    $object.css({
+        "-moz-transform":"rotate("+angle+"deg)",
+        "-webkit-transform":"rotate("+angle+"deg)",
+        "-ms-transform":"rotate("+angle+"deg)",
+        "-o-transform":"rotate("+angle+"deg)"
+    });
+}
 

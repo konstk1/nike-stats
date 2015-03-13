@@ -3,7 +3,6 @@ require 'utils'
 
 class NikeApi
 
-  # TODO: when getting gps, get timezone based on first lat/lon and update start_time
   # TODO: get city based on lat/lon
 
   RunData = Struct.new(:activity_id, :start_time, :distance, :duration, :calories)
@@ -18,6 +17,7 @@ class NikeApi
 
     if @user.need_token?
       access_token, expires_at = login_to_nike(username, password)
+      raise StandardError, "Fail to login to NikePlus." if access_token.nil?
       @user.nike_access_token = access_token
       @user.token_expiration_time = expires_at
       @user.save

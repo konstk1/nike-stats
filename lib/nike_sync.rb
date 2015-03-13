@@ -6,16 +6,19 @@ class NikeSync
 
   def self.sync
     new_run_count = 0
-    nike = NikeApi.new(username: Rails.application.secrets.nike_user_name,
-                       password: Rails.application.secrets.nike_password)
+
+    begin
+      nike = NikeApi.new(username: Rails.application.secrets.nike_user_name,
+                         password: Rails.application.secrets.nike_password)
+    rescue
+      return -1
+    end
 
     latest_run = NikeRun.last
 
     if latest_run.present?
-      puts "Runs found"
       runs = nike.get_activity_list_json_with_dates(start_date: NikeRun.last.start_time, end_date: Date.today)
     else
-      puts 'Nothing found'
       runs = nike.get_activity_list_json_with_count(count: 9999)
     end
 
