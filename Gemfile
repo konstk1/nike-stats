@@ -35,7 +35,7 @@ gem 'autoprefixer-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :prodcution do
+group :production do
   gem 'rails_12factor'
 end
 group :development, :test do
