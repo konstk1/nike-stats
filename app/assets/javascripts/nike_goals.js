@@ -65,6 +65,7 @@ var defaultGoalChartOptions = {
         title: {
             text: 'Y Title'
         },
+        floor: 0,
         gridLineWidth: .5,
         minorGridLineWidth: .5,
         minorTickInterval: 'auto'

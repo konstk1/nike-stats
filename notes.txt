@@ -11,7 +11,5 @@ Plan:
   - right chart of selected goal
   - right (maybe more data)
 
-- Goal chart min y = 0
-
 - Deployment:
   - keep-alive (new relic?)
