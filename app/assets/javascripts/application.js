@@ -16,3 +16,16 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+    $('#sync_btn').on('click', function () {
+        $('#sync_icon').animate({rotation: "90"}, 500);
+        $.ajax({
+            url: '/sync',
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
+});
+

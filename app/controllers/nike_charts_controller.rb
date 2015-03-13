@@ -2,16 +2,8 @@ require 'nike_sync'
 require 'run_stats'
 
 class NikeChartsController < ApplicationController
-  @@nike = nil
+
   def initialize
-    @num_new_runs = NikeSync.sync
-  	# for now, don't reload data every time
-  	# if @@nike.nil?
-  	#   @@nike = NikeApi.new(username: Rails.application.secrets.nike_user_name,
-  	# 	                     password: Rails.application.secrets.nike_password)
-  	# else
-  	#   logger.info "Using cached data."
-  	# end
   	@run_stats = RunStats.new(NikeRun.all)
   	super
   end
@@ -22,6 +14,11 @@ class NikeChartsController < ApplicationController
   	@wday, @avg_distance = @run_stats.avg_distance_by_day_of_week
 
   	@run_stats.pace_trend
+  end
+
+  def sync
+    @num_new_runs = NikeSync.sync
+    render json: {num_new_runs: @num_new_runs}
   end
   
 end
