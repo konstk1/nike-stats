@@ -12,7 +12,7 @@ class NikeRun < ActiveRecord::Base
     if time_zone.nil?
       time_zone = ActiveSupport::TimeZone.new("UTC")
     end
-    nike_run.start_time     = DateTime.iso8601(run_json["startTime"]) + time_zone.utc_offset.seconds
+    nike_run.start_time     = time_zone.utc_to_local(DateTime.iso8601(run_json["startTime"]))
 
     nike_run.distance_mi    = Utils::km_to_mi(run_json["metricSummary"]["distance"].to_f)
     nike_run.duration_min   = Utils::str_to_mins(run_json["metricSummary"]["duration"])

@@ -16,13 +16,13 @@
     </div>
     <div class="col-md-6">
       <br>
-      <p><%= @num_runs %></p>
-      <p><%= @total_distance %> miles</p>
+      <p><%= @runs_summary[:num_runs] %></p>
+      <p><%= @runs_summary[:total_distance] %> miles</p>
       <br>
-      <p><%= @avg_distance %> mi/run</p>
-      <p><%= @avg_pace %> per mile</p>
+      <p><%= @runs_summary[:avg_distance] %> mi/run</p>
+      <p><%= @runs_summary[:avg_pace] %> per mile</p>
       <br>
-      <p><%= @last_run_time %> (<%= @days_ago %>)</p>
+      <p><%= @runs_summary[:last_run_time] %> (<%= @runs_summary[:days_ago] %>)</p>
     </div>
   </div>
   <div class="col-md-6 card">
