@@ -1,5 +1,7 @@
 Plan:
 
+- Move goal data logic to model
+
 - Create landing page (UI)
   - Show last sync in grey next to sync icon
   - Current goal partial

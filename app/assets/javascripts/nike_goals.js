@@ -14,14 +14,14 @@ function chartGoalBurndown() {
     options.yAxis.title.text = 'Distance (mi)';
     options.series.push({
         name: "Plan",
-        color: "Blue",
+        color: "#FFA640",
         pointStart: gon.goal_start_date,
         pointInterval: gon.goal_date_interval,
         data: gon.goal_ideal_distance
     });
     options.series.push({
         name: "Actual",
-        color: "Red",
+        color: "#7E4EFF",
         pointStart: gon.goal_start_date,
         pointInterval: gon.goal_date_interval,
         data: gon.goal_actual_distance
