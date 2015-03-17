@@ -67,8 +67,8 @@ var defaultGoalChartOptions = {
         },
         floor: 0,
         gridLineWidth: .5,
-        minorGridLineWidth: .4,
-        minorTickInterval: 5
+        //minorGridLineWidth: .4,
+        //minorTickInterval: 5
     },
     series: [],
     plotOptions: {
