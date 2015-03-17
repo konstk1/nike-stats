@@ -34,18 +34,18 @@ class HomeController < ApplicationController
   end
 
   def current_goal_data
-    @goal = NikeGoal.find(1)
+    @goal = NikeGoal.order(:start_time).last
     dates = (@goal.start_time.to_datetime...@goal.end_time.to_datetime).map { |d| d.end_of_day }
 
     runs = @goal.get_runs
 
-    ideal_distance = Array.new(dates.count, 0)
+    plan_distance = Array.new(dates.count, 0)
     actual_distance = Array.new(dates.count, 0)
 
     miles_per_day = @goal.distance_mi / dates.count
 
     dates.each_with_index { |date, i|
-      ideal_distance[i] = (i+1) * miles_per_day
+      plan_distance[i] = (i+1) * miles_per_day
       if date <= DateTime.now.end_of_day
         actual_distance[i] = runs.select { |run| run.start_time <= date }.map { |run| run.distance_mi }.sum
       else
@@ -56,7 +56,7 @@ class HomeController < ApplicationController
 
     gon.goal_start_date = dates.first.beginning_of_day.to_i * 1000
     gon.goal_date_interval = 1.day.seconds * 1000
-    gon.goal_ideal_distance = ideal_distance
+    gon.goal_plan_distance = plan_distance
     gon.goal_actual_distance = actual_distance.select { |d| d >= 0 }
   end
 end
