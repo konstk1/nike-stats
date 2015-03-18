@@ -26,6 +26,7 @@ function chartGoalBurndown() {
         pointInterval: gon.goal_date_interval,
         data: gon.goal_actual_distance
     });
+    console.log(gon.goal_start_date);
     $('#goalChart').highcharts(options);
 }
 
