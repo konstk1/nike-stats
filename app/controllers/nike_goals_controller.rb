@@ -9,7 +9,10 @@ class NikeGoalsController < ApplicationController
   end
 
   def index
-    @goals = NikeGoal.all
+    @goals = NikeGoal.order("start_time DESC")
+    @goals.each { |goal|
+      goal.calculate_stats
+    }
   end
 
   def show

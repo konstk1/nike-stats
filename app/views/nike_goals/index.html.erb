@@ -1,16 +1,20 @@
-<h1>Listing Goals</h1>
+<h1>Running Goals</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Distance</th>
-  </tr>
-
-  <% @goals.each do |goal| %>
-      <tr>
-        <td><%= goal.title %></td>
-        <td><%= goal.distance_mi %> miles</td>
-        <td><%= link_to 'View', goal, data: { no_turbolink: true } %></td>
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+        <th>Dates</th>
+        <th>Distance</th>
+        <th>Progress</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @goals.each do |goal| %>
+      <tr data-link="<%= nike_goal_path(goal) %>">
+        <td><%= goal.start_time.strftime("%b %d") %> - <%= goal.end_time.strftime("%b %d") %></td>
+        <td><%= goal.distance_mi %> mi</td>
+        <td><%= (goal.completed_distance / goal.distance_mi * 100).round(1) %>% (<%= goal.completed_distance.round(1) %> / <%= goal.distance_mi.round(1) %> mi )</td>
       </tr>
-  <% end %>
+    <% end %>
+  </tbody>
 </table>

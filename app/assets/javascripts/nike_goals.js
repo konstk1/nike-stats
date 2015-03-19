@@ -4,7 +4,12 @@
 //= require highcharts
 
 $(function() {
-    if ($(".nike_goals.show").length) {
+    if ($(".nike_goals.index").length) {
+        $("tr[data-link]").on("click", function() {
+            window.location = this.dataset.link;
+        });
+    }
+    else if ($(".nike_goals.show").length) {
         chartGoalBurndown();
     }
 });
