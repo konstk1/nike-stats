@@ -31,11 +31,13 @@
       <br>
       <p>Description:</p>
       <p>Progress:</p>
+      <p>Status:</p>
     </div>
     <div class="col-md-6">
       <br>
-      <p>144 miles by Jan 26</p>
-      <p>9.5mi / 144 mi (6.6%)</p>
+      <p><%= @goal.distance_mi.round(1) %> miles by <%= @goal.end_time.strftime("%b %d") %> (<%= (@goal.days_left.to_i/7.0).round(1) %> weeks left)</p>
+      <p><%= (@goal.completed_distance / @goal.distance_mi * 100).round(1) %>% (<%= @goal.completed_distance.round(1) %> / <%= @goal.distance_mi.round(1) %> mi )</p>
+      <p><%= (@goal.completed_distance - @goal.planned_distance).round(1) %> mi ahead of schedule</p>
     </div>
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -43,7 +45,4 @@
       </div>
     </div>
   </div>
-</div>
-<div class="row card">
-  <h1 class="text-center">Charts</h1>
 </div>

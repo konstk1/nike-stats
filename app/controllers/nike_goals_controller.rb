@@ -14,7 +14,7 @@ class NikeGoalsController < ApplicationController
 
   def show
     @goal = NikeGoal.find(params[:id])
-    @goal.stats.to_gon(gon)
+    @goal.calculate_stats.to_gon(gon)
   end
 
   private

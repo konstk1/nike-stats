@@ -21,9 +21,10 @@ var alert_timeout_ms = 5000;
 
 $(function() {
     $('#sync_btn').on('click', function () {
-        $('#sync_icon').animate({rotation: "+=360"}, {step: function(angle) {
+        num_spins = 3;
+        $('#sync_icon').animate({rotation: "+=" + (360 * num_spins)}, {step: function(angle) {
             rotate($(this), angle);
-        }, complete: function() { }, duration: 1000});
+        }, complete: function() { }, duration: 1000 * num_spins});
 
         $.ajax({
             url: '/sync',

@@ -58,10 +58,3 @@ class RunStats
   end
 
 end
-
-# function distanceToColor (dist)
-# {
-#   var idx = (downToNearestHalf(dist) - 2) / 0.5;
-#   var colors = ['blue','cyan','green','yellow','orange','pink','red','red','darkred'];
-#   return colors[idx];
-# }

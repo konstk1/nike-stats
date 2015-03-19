@@ -1,4 +1,5 @@
 class NikeGoal < ActiveRecord::Base
+
   def self.create_from_form(params)
     goal = NikeGoal.new
     goal.title       = params[:title]
@@ -20,7 +21,7 @@ class NikeGoal < ActiveRecord::Base
     runs = NikeRun.where(start_time: start_time...end_time).order(:start_time)
   end
 
-  def stats
+  def calculate_stats
     dates = (start_time.to_datetime...end_time.to_datetime).map { |d| d.end_of_day }
 
     runs = get_runs
@@ -28,16 +29,32 @@ class NikeGoal < ActiveRecord::Base
     @plan_distance = Array.new(dates.count, 0)
     @actual_distance = Array.new(0)
 
-    miles_per_day = distance_mi / dates.count
+    @miles_per_day = distance_mi / dates.count
 
     dates.each_with_index { |date, i|
-      @plan_distance[i] = (i+1) * miles_per_day
+      @plan_distance[i] = (i+1) * @miles_per_day
       if date <= DateTime.now.end_of_day
         @actual_distance << runs.select { |run| run.start_time <= date }.map { |run| run.distance_mi }.sum
       end
     }
 
     self
+  end
+
+  def completed_distance
+    @actual_distance.last
+  end
+
+  def planned_distance
+    @miles_per_day * days_in
+  end
+
+  def days_in
+    Date.today - start_time.to_date + 1
+  end
+
+  def days_left
+    end_time.to_date - Date.today + 1
   end
 
   def to_gon(gon)

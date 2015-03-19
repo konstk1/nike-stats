@@ -34,7 +34,7 @@ class HomeController < ApplicationController
   end
 
   def current_goal_data
-    goal = NikeGoal.most_recent
-    goal.stats.to_gon(gon)
+    @goal = NikeGoal.most_recent
+    @goal.calculate_stats.to_gon(gon)
   end
 end
