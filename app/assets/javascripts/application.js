@@ -1,8 +1,8 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+// This is a manifest file that will be compiled into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+// or any plugins vendor/assets/javascripts directory can be referenced here using a relative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // compiled file.
@@ -21,7 +21,7 @@ var alert_timeout_ms = 5000;
 
 $(function() {
     $('#sync_btn').on('click', function () {
-        $('#sync_icon').animate({rotation: "+=360"}, {step: function(angle, fx) {
+        $('#sync_icon').animate({rotation: "+=360"}, {step: function(angle) {
             rotate($(this), angle);
         }, complete: function() { }, duration: 1000});
 

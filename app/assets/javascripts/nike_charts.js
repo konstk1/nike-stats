@@ -4,40 +4,42 @@
 //= require highcharts
 
 $(function() {
-	chartRunsByDistance();
-	chartRunsByDayOfWeek();
-	chartAvgDistanceByDayOfWeek();
+    if ($(".nike_charts.index").length) {
+        chartRunsByDistance($('#chartRunsByDistance'));
+        chartRunsByDayOfWeek($('#chartRunsByDayOfWeek'));
+        chartAvgDistanceByDayOfWeek($('#chartAvgDistanceByDayOfWeek'));
+    }
 });
 
-function chartRunsByDistance() {
+function chartRunsByDistance($chartElement) {
 	var options = $.extend(true, {}, defaultColumnChartOptions);
 	options.title.text = 'Runs by Distance';
 	options.xAxis.title.text = 'Distance (mi)';
 	options.yAxis.title.text = 'Num Runs';
-	options.xAxis.categories = $('#chartRunsByDistance').data('x');
-	options.series[0].data = $('#chartRunsByDistance').data('y');
-	$('#chartRunsByDistance').highcharts(options);
+	options.xAxis.categories = $chartElement.data('x');
+	options.series[0].data = $chartElement.data('y');
+    $chartElement.highcharts(options);
 }
 
-function chartRunsByDayOfWeek() {
+function chartRunsByDayOfWeek($chartElement) {
 	var options = $.extend(true, {}, defaultColumnChartOptions);
 	options.title.text = 'Runs by Day of Week';
 	options.xAxis.title.text = 'Day of Week';
 	options.yAxis.title.text = 'Num Runs';
-	options.xAxis.categories = $('#chartRunsByDayOfWeek').data('x');
-	options.series[0].data = $('#chartRunsByDayOfWeek').data('y');
-	$('#chartRunsByDayOfWeek').highcharts(options);
+	options.xAxis.categories = $chartElement.data('x');
+	options.series[0].data = $chartElement.data('y');
+    $chartElement.highcharts(options);
 }
 
-function chartAvgDistanceByDayOfWeek() {
+function chartAvgDistanceByDayOfWeek($chartElement) {
 	var options = $.extend(true, {}, defaultColumnChartOptions);
 	options.title.text = 'Avg Distance by Day of Week';
 	options.xAxis.title.text = 'Day of Week';
 	options.yAxis.title.text = 'Avg Distance (mi)';
-	options.xAxis.categories = $('#chartAvgDistanceByDayOfWeek').data('x');
-	options.series[0].data = $('#chartAvgDistanceByDayOfWeek').data('y');
-	options.plotOptions.series.dataLabels.format = '{y:.1f}'
-	$('#chartAvgDistanceByDayOfWeek').highcharts(options);
+	options.xAxis.categories = $chartElement.data('x');
+	options.series[0].data = $chartElement.data('y');
+	options.plotOptions.series.dataLabels.format = '{y:.1f}';
+    $chartElement.highcharts(options);
 }
 
 var defaultColumnChartOptions = {
