@@ -9,9 +9,9 @@ class NikeChartsController < ApplicationController
   end
 
   def index
-  	@distances,@num_runs = @run_stats.runs_by_distance
-  	@days_of_week, @num_runs_wday = @run_stats.runs_by_day_of_week
-  	@wday, @avg_distance = @run_stats.avg_distance_by_day_of_week
+  	gon.distances,gon.num_runs = @run_stats.runs_by_distance
+  	gon.days_of_week, gon.num_runs_wday = @run_stats.runs_by_day_of_week
+  	gon.wday, gon.avg_distance = @run_stats.avg_distance_by_day_of_week
 
   	@run_stats.pace_trend
   end

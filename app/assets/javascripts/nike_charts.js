@@ -16,8 +16,8 @@ function chartRunsByDistance($chartElement) {
 	options.title.text = 'Runs by Distance';
 	options.xAxis.title.text = 'Distance (mi)';
 	options.yAxis.title.text = 'Num Runs';
-	options.xAxis.categories = $chartElement.data('x');
-	options.series[0].data = $chartElement.data('y');
+	options.xAxis.categories = gon.distances;
+	options.series[0].data = gon.num_runs;
     $chartElement.highcharts(options);
 }
 
@@ -26,8 +26,8 @@ function chartRunsByDayOfWeek($chartElement) {
 	options.title.text = 'Runs by Day of Week';
 	options.xAxis.title.text = 'Day of Week';
 	options.yAxis.title.text = 'Num Runs';
-	options.xAxis.categories = $chartElement.data('x');
-	options.series[0].data = $chartElement.data('y');
+	options.xAxis.categories = gon.days_of_week;
+	options.series[0].data = gon.num_runs_wday;
     $chartElement.highcharts(options);
 }
 
@@ -36,8 +36,8 @@ function chartAvgDistanceByDayOfWeek($chartElement) {
 	options.title.text = 'Avg Distance by Day of Week';
 	options.xAxis.title.text = 'Day of Week';
 	options.yAxis.title.text = 'Avg Distance (mi)';
-	options.xAxis.categories = $chartElement.data('x');
-	options.series[0].data = $chartElement.data('y');
+	options.xAxis.categories = gon.wday;
+	options.series[0].data = gon.avg_distance;
 	options.plotOptions.series.dataLabels.format = '{y:.1f}';
     $chartElement.highcharts(options);
 }
