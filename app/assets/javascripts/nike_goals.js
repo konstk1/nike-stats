@@ -36,6 +36,7 @@ function chartGoalBurndown(zoom) {
     chart = $('#goalChart').highcharts(options).highcharts();
 
     if (zoom) {
+        // if zoom is enabled, limit xAxis maximum to 2 weeks past start date
         lastDate = gon.goal_start_date + gon.goal_date_interval * (gon.goal_actual_distance.length + 14);
         chart.xAxis[0].setExtremes(gon.goal_start_date, lastDate);
         chart.showResetZoom();
