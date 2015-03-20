@@ -13,6 +13,7 @@
       <p>Average Pace:</p>
       <br>
       <p>Last Run:</p>
+      <br>
     </div>
     <div class="col-md-6">
       <br>
@@ -26,14 +27,18 @@
     </div>
   </div>
   <div class="col-md-6 card">
-    <h1>Current Goal</h1>
-    <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-10">
+        <h1>Current Goal</h1>
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-1">
       <br>
       <p>Description:</p>
       <p>Progress:</p>
       <p>Status:</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       <br>
       <p><%= @goal.distance_mi.round(1) %> miles by <%= @goal.end_time.strftime("%b %d") %> (<%= (@goal.days_left.to_i/7.0).round(1) %> weeks left)</p>
       <p><%= (@goal.completed_distance / @goal.distance_mi * 100).round(1) %>% (<%= @goal.completed_distance.round(1) %> / <%= @goal.distance_mi.round(1) %> mi )</p>

@@ -9,7 +9,7 @@
           <a href="/" data-no-turbolink><span class="glyphicon glyphicon-home"></span> Home</a>
         </li>
         <li class="<%= 'active' if current_page?(nike_charts_path) %>">
-          <a href="/nike_charts"><span class="glyphicon glyphicon-stats"></span> Nike Charts</a>
+          <a href="/nike_charts" data-no-turbolink><span class="glyphicon glyphicon-stats"></span> Nike Charts</a>
         </li>
         <li class="<%= 'active' if current_page?(nike_goals_path) %>">
           <a href="/nike_goals"><span class="glyphicon glyphicon-check"></span> Nike Goals</a>
@@ -17,7 +17,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <!--<li><button type="button" class="btn btn-info navbar-btn"><span class="glyphicon glyphicon-refresh"> Sync</button></li>-->
-        <li><a href="#" id="sync_btn"><span class="glyphicon glyphicon-refresh" id="sync_icon"></span> Sync</a></li>
+        <li><a href="" id="sync_btn"><span class="glyphicon glyphicon-refresh" id="sync_icon"></span> Sync</a></li>
       </ul>
     </div>
   </div>
