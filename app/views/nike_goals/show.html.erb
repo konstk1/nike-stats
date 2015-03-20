@@ -1,40 +1,36 @@
 <h1>Goal Stats</h1>
+<br>
 
-<p>
-  <strong>Title:</strong>
-  <%= @goal.title %>
-</p>
+<div class="col-md-3">
+  <p>
+    <strong>Start Date:</strong>
+    <%= @goal.start_time.strftime("%m/%d/%Y (%A)") %>
+  </p>
 
-<p>
-  <strong>Start Date:</strong>
-  <%= @goal.start_time %>
-</p>
+  <p>
+    <strong>End Date:</strong>
+    <%= (@goal.end_time - 1.day).strftime("%m/%d/%Y (%A)") %>
+  </p>
 
-<p>
-  <strong>End Date:</strong>
-  <%= @goal.end_time %>
-</p>
+  <p>
+    <strong>Duration:</strong>
+    <%= @goal.duration_wk %> weeks
+  </p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @goal.duration_wk %> weeks
-</p>
+  <p>
+    <strong>Distance:</strong>
+    <%= @goal.distance_mi %> miles (<%= @goal.distance_mi / @goal.duration_wk %> mi/week)
+  </p>
 
-<p>
-  <strong>Distance:</strong>
-  <%= @goal.distance_mi %> miles
-</p>
+  <p>
+    <strong>Run Stats:</strong> <br>
+    &nbsp&nbsp&nbsp&nbsp<%= @goal.get_runs.count %> runs <br>
+    &nbsp&nbsp&nbsp&nbsp<%= @goal.get_runs.map { |r| r.distance_mi }.sum.round(2) %> miles
+  </p>
+</div>
 
-<p>
-  <strong>Run Stats:</strong> <br>
-  &nbsp&nbsp&nbsp&nbsp<%= @goal.get_runs.count %> runs <br>
-  &nbsp&nbsp&nbsp&nbsp<%= @goal.get_runs.map { |r| r.distance_mi}.sum.round(2) %> miles
-</p>
-
-<p>
-  <strong>Chart:</strong>
-<div id="goalChart" style="width: 1000px; height: 500px; display: inline-block"> </div>
-
-</p>
+<div class="col-md-8">
+  <div id="goalChart"></div>
+</div>
 
 

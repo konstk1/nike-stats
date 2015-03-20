@@ -17,7 +17,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-var alert_timeout_ms = 5000;
+var alert_timeout_ms = 3000;
 
 $(function() {
     $('#sync_btn').on('click', function () {

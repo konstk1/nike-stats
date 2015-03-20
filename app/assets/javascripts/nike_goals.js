@@ -10,11 +10,11 @@ $(function() {
         });
     }
     else if ($(".nike_goals.show").length) {
-        chartGoalBurndown();
+        chartGoalBurndown(false);
     }
 });
 
-function chartGoalBurndown() {
+function chartGoalBurndown(zoom) {
     var options = $.extend(true, {}, defaultGoalChartOptions);
     options.title.text = 'Goal';
     options.xAxis.title.text = 'Date';
@@ -33,7 +33,14 @@ function chartGoalBurndown() {
         pointInterval: gon.goal_date_interval,
         data: gon.goal_actual_distance
     });
-    $('#goalChart').highcharts(options);
+    chart = $('#goalChart').highcharts(options).highcharts();
+
+    if (zoom) {
+        lastDate = gon.goal_start_date + gon.goal_date_interval * (gon.goal_actual_distance.length + 14);
+        chart.xAxis[0].setExtremes(gon.goal_start_date, lastDate);
+        chart.showResetZoom();
+    }
+
 }
 
 var defaultGoalChartOptions = {

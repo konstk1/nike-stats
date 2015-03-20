@@ -2,6 +2,6 @@
 
 $(function() {
     if ($(".home.index").length) {
-        chartGoalBurndown();
+        chartGoalBurndown(true);
     }
 });
