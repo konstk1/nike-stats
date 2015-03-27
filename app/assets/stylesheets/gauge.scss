@@ -1,0 +1,48 @@
+.gauge {
+  display: inline-block;
+  margin: 20px 30px 20px 30px;
+  padding: 10px;
+
+  color: #777;
+
+  .gauge-data, .gauge-label {
+    text-align: center;
+  }
+
+  .gauge-data {
+    font-weight: bold;
+    font-size: 300%;
+    color: #555;
+
+    span {
+      font-weight: normal;
+      font-size: 50%;
+      color: #777;
+    }
+  }
+
+  .gauge-units {
+    display: inline-block;
+  }
+
+  .gauge-label {
+  }
+
+  hr {
+    border-width: 4px;
+    margin: 0px 0px 0px 0px;
+    border-color: #777;
+  }
+  hr.red {
+    border-color: #d1603d;
+  }
+  hr.green {
+    border-color: #1BFF6C;
+  }
+  hr.blue {
+    border-color: #129490;
+  }
+  hr.yellow {
+    border-color: #EAD502;
+  }
+}

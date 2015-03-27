@@ -3,33 +3,46 @@
 </div>
 <div class="row">
   <div class="col-md-6 card">
-    <h1>Summary</h1>
-    <div class="col-md-4 col-md-offset-1">
+    <h1 class="card-header">Summary</h1>
+
+    <div style="text-align: center">
+      <div class="gauge">
+        <div class="gauge-data"><%= @runs_summary[:total_distance] %><span> mi</span></div>
+        <hr class="blue">
+        <div class="gauge-label">distance</div>
+      </div>
+
+      <div class="gauge">
+        <div class="gauge-data"><%= @runs_summary[:num_runs] %></div>
+        <hr class="blue">
+        <div class="gauge-label">runs</div>
+      </div>
       <br>
-      <p>Total Runs:</p>
-      <p>Total Distance:</p>
-      <br>
-      <p>Average Distance:</p>
-      <p>Average Pace:</p>
-      <br>
-      <p>Last Run:</p>
-      <br>
-    </div>
-    <div class="col-md-6">
-      <br>
-      <p><%= @runs_summary[:num_runs] %></p>
-      <p><%= @runs_summary[:total_distance] %> miles</p>
-      <br>
-      <p><%= @runs_summary[:avg_distance] %> mi/run</p>
-      <p><%= @runs_summary[:avg_pace] %> per mile</p>
-      <br>
-      <p><%= @runs_summary[:last_run_time] %> (<%= @runs_summary[:days_ago] %>)</p>
+
+      <div class="gauge">
+        <div class="gauge-data"><%= @runs_summary[:avg_distance] %><span> mi</span></div>
+        <hr class="blue">
+        <div class="gauge-label">avg distance</div>
+      </div>
+
+      <div class="gauge">
+        <div class="gauge-data"><%= @runs_summary[:avg_pace] %></div>
+        <hr class="blue">
+        <div class="gauge-label">avg pace</div>
+      </div>
+
+      <div class="gauge">
+        <div class="gauge-data">
+          <span><b><%= @runs_summary[:last_run_time] %></b> (<%= @runs_summary[:days_ago] %>)</span></div>
+        <hr class="blue">
+        <div class="gauge-label">last run</div>
+      </div>
     </div>
   </div>
   <div class="col-md-6 card">
     <div class="row">
       <div class="col-md-10">
-        <h1>Current Goal</h1>
+        <h1 class="card-header">Current Goal</h1>
       </div>
     </div>
     <div class="col-md-3 col-md-offset-1">
