@@ -45,17 +45,34 @@
         <h1 class="card-header">Current Goal</h1>
       </div>
     </div>
-    <div class="col-md-3 col-md-offset-1">
-      <br>
-      <p>Description:</p>
-      <p>Progress:</p>
-      <p>Status:</p>
-    </div>
-    <div class="col-md-8">
-      <br>
-      <p><%= @goal.distance_mi.round(1) %> miles by <%= @goal.end_time.strftime("%b %d") %> (<%= (@goal.days_left.to_i/7.0).round(1) %> weeks left)</p>
-      <p><%= (@goal.completed_distance / @goal.distance_mi * 100).round(1) %>% (<%= @goal.completed_distance.round(1) %> / <%= @goal.distance_mi.round(1) %> mi )</p>
-      <p><%= (@goal.completed_distance - @goal.planned_distance).round(1) %> mi ahead of schedule</p>
+    <br>
+    <p style="text-align: center; font-size: 120%"><%= @goal.distance_mi.round(1) %> miles by <%= @goal.end_time.strftime("%b %d") %> (<%= (@goal.days_left.to_i/7.0).round(1) %> weeks left)</p>
+    <div class="vertical-center" style="text-align: center">
+      <div class="col-md-4 col-md-offset-2">
+        <div class="progress-circle" id="progress-circle" data-progress="<%= (@goal.completed_distance / @goal.distance_mi).round(2) %>"></div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="gauge" style="margin: 0px; font-size: 80%">
+          <div class="gauge-data"><%= @goal.completed_distance.round(1) %><span> mi</span></div>
+          <hr class="green">
+          <div class="gauge-label">completed (out of <%= @goal.distance_mi.round(1) %> mi)</div>
+        </div>
+        <br>
+
+        <div class="gauge" style="margin: 0px; font-size: 80%">
+          <div class="gauge-data"><%= (@goal.completed_distance - @goal.planned_distance).round(1).abs %><span> mi</span>
+          </div>
+          <% if (@goal.completed_distance - @goal.planned_distance) >= 0 %>
+            <hr class="green">
+            <div class="gauge-label">ahead of plan</div>
+          <% else %>
+              <hr class="red">
+              <div class="gauge-label">behind plan</div>
+          <% end %>
+        </div>
+      </div>
+
     </div>
     <div class="row">
       <div class="col-md-10 col-md-offset-1">

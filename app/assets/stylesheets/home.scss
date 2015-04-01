@@ -2,3 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.progress-circle {
+  height: 140px;
+  display: inline-block;
+
+  svg {
+    height: 100%;
+    display: block;
+  }
+
+  .progressbar-text {
+    font-size: 200%;
+    font-weight: bold;
+  }
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
