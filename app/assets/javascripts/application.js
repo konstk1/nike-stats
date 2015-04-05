@@ -25,22 +25,23 @@ $(function() {
         $('#sync_icon').animate({rotation: "+=" + (360 * num_spins)}, {step: function(angle) {
             rotate($(this), angle);
         }, complete: function() { }, duration: 1000 * num_spins});
-
+        console.log('Syncing');
         $.ajax({
             url: '/sync',
             success: function (data) {
+                console.log(data);
                 if (data.num_new_runs == 0) {
                     show_alert("info", "No new runs.", alert_timeout_ms);
                 } else if (data.num_new_runs < 0) {
                     show_alert("danger", "Failed to sync!", alert_timeout_ms);
                 } else {
                     show_alert("success", "Synced "+data.num_new_runs+" new runs!", alert_timeout_ms);
-                    if (data.num_new_runs > 0){
-                        location.reload();
-                    }
+                    location.reload();
                 }
             }
         });
+
+        return false;
     });
 });
 

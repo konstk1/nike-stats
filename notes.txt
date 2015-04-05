@@ -1,9 +1,11 @@
 Plan:
 
+- Fix
+  - Text size for mobile (@media)
+  - Center goal gauges in narrow layout
+
 - Create landing page (UI)
   - Show last sync in grey next to sync icon
-  - Current goal partial
-    - Rotary % indicator (current vs plan) (with mi)
 
 - Goal UI
   - left selectable list (with stats)
