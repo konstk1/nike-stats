@@ -1,7 +1,6 @@
 Plan:
 
 - Fix
-  - Text size for mobile (@media)
   - Center goal gauges in narrow layout
 
 - Create landing page (UI)
