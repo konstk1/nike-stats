@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20150313135249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
   create_table "nike_goals", force: :cascade do |t|
     t.float    "distance_mi"
@@ -39,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150313135249) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "nike_runs", ["start_time"], name: "index_nike_runs_on_start_time", unique: true
+  add_index "nike_runs", ["start_time"], name: "index_nike_runs_on_start_time", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "nike_username"
@@ -49,6 +48,6 @@ ActiveRecord::Schema.define(version: 20150313135249) do
     t.datetime "updated_at",            null: false
   end
 
-  add_index "users", ["nike_username"], name: "index_users_on_nike_username", unique: true
+  add_index "users", ["nike_username"], name: "index_users_on_nike_username", unique: true, using: :btree
 
 end

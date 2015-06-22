@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   get 'nike_charts/index'
   get 'nike_charts' => 'nike_charts#index'
 
+  # Alexa endpoint
+
+  get 'alexa' => 'alexa#respond'
+  post 'alexa' => 'alexa#listen'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
