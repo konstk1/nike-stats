@@ -1,10 +1,16 @@
+require 'Alexa'
+
 class AlexaController < ApplicationController
+
+  @@alexa = Alexa.new
 
 	def respond
 		render text:"This is test"
 	end
 
 	def listen
-		render text:"Listened"
-	end
+    status, response = @@alexa.process_request(params)
+		render json: response, status: status
+  end
+
 end

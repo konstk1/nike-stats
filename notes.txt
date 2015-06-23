@@ -1,5 +1,7 @@
 Plan:
 
+- Alexa
+
 - Fix
   - Center goal gauges in narrow layout
 
