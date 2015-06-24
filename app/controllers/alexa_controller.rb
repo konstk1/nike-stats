@@ -1,4 +1,4 @@
-require 'Alexa'
+require 'alexa'
 
 class AlexaController < ApplicationController
 
