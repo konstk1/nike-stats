@@ -39,7 +39,7 @@ class NikeApi
     end_point = "https://api.nike.com/v1/me/sport/activities/RUNNING" +
                 "?count=#{count}&startDate=#{start_date_str}&endDate=#{end_date_str}"
     activity_list_json = get_json_from_endpoint(end_point)
-    activity_list_json["data"].reverse   # return in chronological order
+    activity_list_json["data"].reverse unless activity_list_json["data"].nil?  # return in chronological order
   end
 
   def get_gps_data(activity_id)

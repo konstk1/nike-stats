@@ -22,7 +22,9 @@ class NikeSync
       runs = nike.get_activity_list_json_with_count(count: 9999)
     end
 
-    unless runs.nil?
+    if runs.nil?
+      new_run_count = -1    # in case of error, return -1
+    else runs.nil?
       runs.each { |run_json|
         r = NikeRun.create_from_json(run_json)
         if r.errors.count == 0
