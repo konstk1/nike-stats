@@ -7,13 +7,13 @@ class NikeSync
   def self.sync
     new_run_count = 0
 
-    Rails.logger.info("Staring sync")
+    puts "Staring sync"
 
     begin
       nike = NikeApi.new(username: Rails.application.secrets.nike_user_name,
                          password: Rails.application.secrets.nike_password)
     rescue
-      Rails.logger.fatal("Failed to get user")
+      puts "Failed to get user"
       return -1
     end
 
