@@ -87,12 +87,10 @@ private
 
   def login_to_nike(username, password)
     uri = URI.parse('https://developer.nike.com/services/login')
-    Rails.logger.info("Posting form...#{username}/#{password}")
     begin
       response = Net::HTTP.post_form(uri, {username: username, password: password})
     rescue Exception => e
       Rails.logger.info("Post error: #{e.message}")
-      puts e.backtrace.inspect
     end
 
     Rails.logger.info("Form posted...")

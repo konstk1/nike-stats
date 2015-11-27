@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
       return true
     end
 
-    Rails.logger.info("Don't need token #{token_expieration_time} vs #{DateTime.now.utc}")
+    Rails.logger.info("Don't need token #{token_expiration_time} vs #{DateTime.now.utc}")
     false
   end
 

@@ -12,7 +12,8 @@ class NikeSync
     begin
       nike = NikeApi.new(username: Rails.application.secrets.nike_user_name,
                          password: Rails.application.secrets.nike_password)
-    rescue
+    rescue Exception => e
+      Rails.logger.info("Post error: #{e.message}")
       puts "Failed to get user"
       return -1
     end
