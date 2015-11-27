@@ -16,12 +16,15 @@ class NikeApi
     end
 
     if @user.need_token?
+      Rails.logger.info("Logging in to nike")
       access_token, expires_at = login_to_nike(username, password)
       raise StandardError, "Fail to login to NikePlus." if access_token.nil?
       @user.nike_access_token = access_token
       @user.token_expiration_time = expires_at
       @user.save
     end
+
+    Rails.logger.info("Nike init done")
 
   end
 
