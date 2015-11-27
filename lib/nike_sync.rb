@@ -26,7 +26,7 @@ class NikeSync
       else
         runs = nike.get_activity_list_json_with_count(count: 9999)
       end
-    rescue
+    rescue Exception => e
         Rails.logger.info("Get runs error: #{e.message}")
         puts "Failed to get runs"
         return -1
