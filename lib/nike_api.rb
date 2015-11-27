@@ -90,8 +90,9 @@ private
     Rails.logger.info("Posting form...#{username}/#{password}")
     begin
       response = Net::HTTP.post_form(uri, {username: username, password: password})
-    rescue
-      Rails.logger.info("Post error: #{response}")
+    rescue Exception => e
+      Rails.logger.info("Post error: #{e.message}")
+      puts e.backtrace.inspect
     end
 
     Rails.logger.info("Form posted...")
