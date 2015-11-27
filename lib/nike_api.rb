@@ -20,7 +20,7 @@ class NikeApi
     if @user.need_token?
       Rails.logger.info("Logging in to nike")
       access_token, expires_at = login_to_nike(username, password)
-      puts "Logged in?: #{access_token}"
+      Rails.logger.inf("Logged in?: #{access_token}")
       raise StandardError, "Fail to login to NikePlus." if access_token.nil?
       @user.nike_access_token = access_token
       @user.token_expiration_time = expires_at
@@ -88,7 +88,12 @@ private
   def login_to_nike(username, password)
     uri = URI.parse('https://developer.nike.com/services/login')
     Rails.logger.info("Posting form...#{username}/#{password}")
-    response = Net::HTTP.post_form(uri, {username: username, password: password})
+    begin
+      response = Net::HTTP.post_form(uri, {username: username, password: password})
+    rescue
+      Rails.logger.info("Post error: #{response}")
+    end
+
     Rails.logger.info("Form posted...")
     puts "Logging in: #{response}"
     access_token = JSON.parse(response.body)["access_token"]
