@@ -7,7 +7,6 @@ class NikeSync
   def self.sync
     new_run_count = 0
 
-    puts "Staring sync"
     Rails.logger.info "Info: Starting sync"
 
     begin
