@@ -83,6 +83,7 @@ private
     uri = URI.parse('https://developer.nike.com/services/login')
     response = Net::HTTP.post_form(uri, {username: username, password: password})
 
+    puts "Logging in: #{response}"
     access_token = JSON.parse(response.body)["access_token"]
     expires_at = DateTime.now.utc + JSON.parse(response.body)["expires_in"].to_i.seconds
 

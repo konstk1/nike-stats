@@ -8,6 +8,7 @@ class NikeSync
     new_run_count = 0
 
     puts "Staring sync"
+    Rails.logger.info "Info: Starting sync"
 
     begin
       nike = NikeApi.new(username: Rails.application.secrets.nike_user_name,
